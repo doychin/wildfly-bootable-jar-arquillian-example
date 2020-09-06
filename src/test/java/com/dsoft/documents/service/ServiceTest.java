@@ -21,15 +21,13 @@ public class ServiceTest {
 
     @Deployment
     public static WebArchive deployment() {
-        WebArchive archive = ShrinkWrap.create(WebArchive.class)
-            .addClass(Activation.class)
-            .addClass(ServiceImpl.class)
-            .addClass(Service.class)
-            .addClass(TestEntity.class)
-            .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
-            .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
 
-        return archive;
+        return ShrinkWrap.create(WebArchive.class)
+            .addPackages(true, "com.dsoft.documents")
+            .addAsWebInfResource("web.xml")
+            .addAsResource("persistence.xml", "META-INF/persistence.xml")
+            .addManifest()
+            .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @ArquillianResource
