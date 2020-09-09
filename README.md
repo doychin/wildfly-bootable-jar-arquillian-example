@@ -1,0 +1,1 @@
+## Example project on how to use wildfly bootable jar and aruillian to write tests.
